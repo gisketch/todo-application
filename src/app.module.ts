@@ -3,7 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getDatabaseConfig } from './config/database.config';
 import { TodoModule } from './todo/todo.module';
-import { TodoModule } from './todo/todo.module';
 
 @Module({
     imports: [
