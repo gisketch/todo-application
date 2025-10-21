@@ -86,6 +86,26 @@ const App = () => {
         }
     };
 
+    // optimistic update
+    const handleDeleteTodo = async (id: string) => {
+        const originalTodos = [...todos];
+        setTodos(todos.filter(todo => todo.id !== id));
+
+        try {
+            await todoApi.deleteTodo(id);
+            toast.success(
+                "Todo deleted successfully",
+            );
+        } catch (error) {
+            // Rollback on error
+            setTodos(originalTodos);
+            toast.error(
+                "Failed to delete todo. Please try again."
+            );
+            console.error("Error deleting todo:", error);
+        }
+    };
+
     const handleChangeInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setTodoInput(e.target.value);
     }
@@ -106,7 +126,7 @@ const App = () => {
                         </CardHeader>
                         <CardContent className="flex flex-col gap-2">
                             {todos.map((todo) => (
-                                <TodoItem todo={todo} key={todo.id} onToggleComplete={handleToggleComplete} onDelete={todoApi.deleteTodo} />
+                                <TodoItem todo={todo} key={todo.id} onToggleComplete={handleToggleComplete} onDelete={handleDeleteTodo} />
                             ))}
                         </CardContent>
                     </Card>

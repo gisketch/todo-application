@@ -1,4 +1,6 @@
+import { TrashIcon } from "lucide-react"
 import type { Todo } from "../services/api"
+import { Button } from "./ui/button"
 import { Checkbox } from "./ui/checkbox"
 import { Label } from "./ui/label"
 
@@ -15,7 +17,7 @@ const TodoItem = ({ todo, onToggleComplete, onDelete }: TodoItemProps) => {
                 <Checkbox onClick={() => onToggleComplete(todo.id)} checked={todo.isCompleted} />
                 <Label>{todo.task}</Label>
             </div>
-            <button onClick={() => onDelete(todo.id)}>Delete</button>
+            <Button variant="destructive" onClick={() => onDelete(todo.id)} size="icon-sm"><TrashIcon /></Button>
         </div>
     )
 }
