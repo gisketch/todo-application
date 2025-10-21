@@ -50,4 +50,4 @@ My primary experience is with React/TypeScript on the frontend and Kotlin/Spring
 - Proper dependency injection
 - Docker containerization with multi-stage builds
 
-PS. In a production build, I wouldn't expose .env in the repo.
+PS. In a real repository, I wouldn't expose .env in the repo.
