@@ -6,6 +6,9 @@ interface TodoInputProps {
     input: string
     onChangeInput: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
     onTodoAdd: () => void
+    deadline?: Date
+    onDeadlineChange: (date: Date | undefined) => void
+    isLoading?: boolean
 }
 
 const TodoInput = ({ input, onChangeInput, onTodoAdd }: TodoInputProps) => {
