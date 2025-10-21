@@ -2,12 +2,16 @@ import { Separator } from "@radix-ui/react-separator"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupTextarea } from "./ui/input-group"
 import { CalendarIcon, PencilIcon } from "lucide-react"
 
-type TodoInputProps = {}
+interface TodoInputProps {
+    input: string
+    onChangeInput: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+    onTodoAdd: () => void
+}
 
-const TodoInput = (props: TodoInputProps) => {
+const TodoInput = ({ input, onChangeInput, onTodoAdd }: TodoInputProps) => {
     return (
         <InputGroup>
-            <InputGroupTextarea placeholder="What do you wanna do?" />
+            <InputGroupTextarea placeholder="What do you wanna do?" value={input} onChange={onChangeInput} />
             <InputGroupAddon align="block-end">
                 <InputGroupButton
                     variant="outline"
@@ -22,6 +26,8 @@ const TodoInput = (props: TodoInputProps) => {
                     variant="default"
                     className="rounded-full"
                     size="icon-xs"
+                    onClick={onTodoAdd}
+                    disabled={!input}
                 >
                     <PencilIcon />
                     <span className="sr-only">Send</span>
