@@ -13,7 +13,7 @@ interface TodoInputProps {
     isLoading?: boolean
 }
 
-const TodoInput = ({ input, onChangeInput, onTodoAdd, deadline, onDeadlineChange }: TodoInputProps) => {
+const TodoInput = ({ input, onChangeInput, onTodoAdd, deadline, onDeadlineChange, isLoading }: TodoInputProps) => {
     return (
         <InputGroup>
             <InputGroupTextarea placeholder="What do you wanna do?" value={input} onChange={onChangeInput} />
@@ -30,7 +30,7 @@ const TodoInput = ({ input, onChangeInput, onTodoAdd, deadline, onDeadlineChange
                     className="rounded-full"
                     size="icon-xs"
                     onClick={onTodoAdd}
-                    disabled={!input}
+                    disabled={!input || isLoading}
                 >
                     <PencilIcon />
                     <span className="sr-only">Send</span>

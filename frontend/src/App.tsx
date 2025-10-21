@@ -22,7 +22,6 @@ const App = () => {
 
     const fetchTodos = async () => {
         try {
-            setIsFetching(true);
             const data = await todoApi.getAllTodos();
             setTodos(data);
         } catch (error) {
@@ -117,18 +116,19 @@ const App = () => {
         <ThemeProvider defaultTheme="dark" storageKey="todo-theme">
             <div className="flex flex-col items-center py-12 min-h-screen gap-8">
                 <div className="flex flex-col items-center justify-center gap-1">
-                    <h1 className="text-2xl font-bold">Todo-List Frontend</h1>
+                    <h1 className="text-2xl font-bold">Todo-List</h1>
                     <p className="text-xl">Glenn Jimenez</p>
+                    <p className="text-sm">React + NestJS + PostgreSQL</p>
                 </div>
                 <div className="flex flex-col items-center justify-center w-[480px] gap-4">
-                    <TodoInput onChangeInput={handleChangeInput} input={todoInput} onTodoAdd={handleAddTodo} deadline={deadline} onDeadlineChange={setDeadline} />
+                    <TodoInput onChangeInput={handleChangeInput} input={todoInput} onTodoAdd={handleAddTodo} deadline={deadline} onDeadlineChange={setDeadline} isLoading={isLoading} />
                     <Card className="w-[480px]">
                         <CardHeader>
                             <CardTitle>Tasks</CardTitle>
                             <CardDescription>{todos.length} task(s)</CardDescription>
                         </CardHeader>
                         <CardContent className="flex flex-col gap-2">
-                            {todos.length > 0 ? sortedTodos.map((todo) => (
+                            {todos.length > 0 && !isFetching ? sortedTodos.map((todo) => (
                                 <TodoItem todo={todo} key={todo.id} onToggleComplete={handleToggleComplete} onDelete={handleDeleteTodo} />
                             )) : <p className="text-muted-foreground">No tasks found.</p>}
                         </CardContent>
