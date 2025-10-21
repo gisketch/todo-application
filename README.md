@@ -40,7 +40,7 @@ Services are connected via a bridge network. The API exposes REST endpoints unde
 
 ## Note
 
-My primary experience is with React/TypeScript on the frontend and Kotlin/Spring Boot and Node.js/Express on the backend. This was my **first time** working with **NestJS**, which I learned through documentation and best practices research specifically for this project.
+My primary experience is with React/TypeScript on the frontend and Kotlin/Spring Boot and Node.js/Express on the backend. This was my **first time** working with **NestJS**, which I learned through [documentation](https://docs.nestjs.com/recipes/sql-typeorm) and [best practices research](https://arnab-k.medium.com/best-practices-for-structuring-a-nestjs-application-b3f627548220) specifically for this project.
 ### The application follows NestJS conventions including:
 - Modular architecture with controllers, services, and DTOs
 - TypeORM for database operations
