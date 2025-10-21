@@ -23,7 +23,7 @@ const TodoItem = ({ todo, onToggleComplete, onDelete }: TodoItemProps) => {
     return (
         <div className="flex flex-row justify-between">
             <div className="flex items-center gap-3">
-                <Checkbox onClick={() => onToggleComplete(todo.id)} checked={todo.isCompleted} />
+                <Checkbox onCheckedChange={() => onToggleComplete(todo.id)} checked={todo.isCompleted} />
                 <Label className={todo.isCompleted ? "line-through text-muted-foreground" : ""}>{todo.task}</Label>
                 {formattedDeadline && (
                     <Label
