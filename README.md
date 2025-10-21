@@ -26,6 +26,6 @@ A simple full-stack Todo List application:
 - `backend/` (NestJS API)
 - `postgres` (official Docker image managed via docker-compose)
 
-Services are connected via a bridge network. The API exposes REST endpoints under `/todos`, and the frontend consumes the API at `http://localhost:3000`.
+Services are connected via a bridge network. The API exposes REST endpoints under `/todos`, and the frontend consumes the API at `http://localhost:3000`. Check the built react app at `https://localhost:8000`
 
 PS. In a production build, I wouldn't expose .env in the repo.
