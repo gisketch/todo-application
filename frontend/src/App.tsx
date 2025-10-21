@@ -6,6 +6,7 @@ import TodoItem from "./components/todo-item"
 import { todoApi, type Todo } from "./services/api"
 import { Toaster } from "./components/ui/sonner"
 import { toast } from "sonner"
+import { sortTodos } from "./lib/utils"
 
 const App = () => {
     const [todoInput, setTodoInput] = useState("");
@@ -110,6 +111,8 @@ const App = () => {
         setTodoInput(e.target.value);
     }
 
+    const sortedTodos = sortTodos(todos);
+
     return (
         <ThemeProvider defaultTheme="dark" storageKey="todo-theme">
             <div className="flex flex-col items-center py-12 min-h-screen gap-8">
@@ -125,7 +128,7 @@ const App = () => {
                             <CardDescription>{todos.length} task(s)</CardDescription>
                         </CardHeader>
                         <CardContent className="flex flex-col gap-2">
-                            {todos.length > 0 ? todos.map((todo) => (
+                            {todos.length > 0 ? sortedTodos.map((todo) => (
                                 <TodoItem todo={todo} key={todo.id} onToggleComplete={handleToggleComplete} onDelete={handleDeleteTodo} />
                             )) : <p className="text-muted-foreground">No tasks found.</p>}
                         </CardContent>
