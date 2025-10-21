@@ -7,6 +7,8 @@ A simple full-stack Todo List application:
 - Database: PostgreSQL
 - Orchestration: Docker Compose
 
+<img width="610" height="655" alt="image" src="https://github.com/user-attachments/assets/728e7a2e-ad94-4fdc-8b4b-0b128a3dfe7b" />
+
 ## Features
 
 - Add a task with an optional deadline
