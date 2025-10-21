@@ -1,6 +1,8 @@
 import { Separator } from "@radix-ui/react-separator"
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupTextarea } from "./ui/input-group"
 import { CalendarIcon, PencilIcon } from "lucide-react"
+import { DatePicker } from "./date-picker"
+import { format } from "date-fns"
 
 interface TodoInputProps {
     input: string
@@ -11,19 +13,17 @@ interface TodoInputProps {
     isLoading?: boolean
 }
 
-const TodoInput = ({ input, onChangeInput, onTodoAdd }: TodoInputProps) => {
+const TodoInput = ({ input, onChangeInput, onTodoAdd, deadline, onDeadlineChange }: TodoInputProps) => {
     return (
         <InputGroup>
             <InputGroupTextarea placeholder="What do you wanna do?" value={input} onChange={onChangeInput} />
             <InputGroupAddon align="block-end">
-                <InputGroupButton
-                    variant="outline"
-                    className="rounded-full"
-                    size="icon-xs"
-                >
-                    <CalendarIcon />
-                </InputGroupButton>
-                <InputGroupText className="ml-auto">X tasks</InputGroupText>
+                <DatePicker date={deadline} onDateChange={onDeadlineChange}>
+                    <InputGroupButton variant="outline" className="rounded-full" size="icon-xs">
+                        <CalendarIcon />
+                    </InputGroupButton>
+                </DatePicker>
+                <InputGroupText className="ml-auto">{deadline ? format(deadline, "MMM d, yyyy") : "No deadline"}</InputGroupText>
                 <Separator orientation="vertical" className="h-4!" />
                 <InputGroupButton
                     variant="default"
