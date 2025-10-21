@@ -16,6 +16,9 @@ A simple full-stack Todo List application:
 - Delete tasks
 - Clean UI
 - Date picker for setting deadlines
+- Visual feedback for overdue tasks
+- Persistent storage with PostgreSQL
+- Optimistic UI updates for better UX
 - Toast notifications for success/error
 - Sorting:
   - Incomplete first
